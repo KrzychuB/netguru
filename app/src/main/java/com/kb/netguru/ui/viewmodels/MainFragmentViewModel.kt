@@ -1,9 +1,8 @@
 package com.kb.netguru.ui.viewmodels
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.ViewModel
+import com.kb.netguru.base.viewModel.BaseViewModel
 import javax.inject.Inject
 
-class MainFragmentViewModel @Inject constructor()
+class MainFragmentViewModel @Inject constructor() : BaseViewModel()
 {
 }
