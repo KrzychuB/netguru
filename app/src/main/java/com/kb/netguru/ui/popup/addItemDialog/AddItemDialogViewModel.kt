@@ -8,4 +8,11 @@ class AddItemDialogViewModel(
         private val buttonPositiveListener: () -> Unit
 ): BaseViewModel()
 {
+    fun onButtonNegativeClicked(){
+        buttonNegativeListener()
+    }
+
+    fun onButtonPositiveClicked(){
+        buttonPositiveListener()
+    }
 }

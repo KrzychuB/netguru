@@ -1,21 +1,29 @@
 package com.kb.netguru.ui.viewmodels
 
 import android.databinding.ObservableArrayList
-import android.support.v4.app.DialogFragment
+import com.kb.netguru.NetguruApplication
 import com.kb.netguru.base.viewModel.BaseViewModel
 import com.kb.netguru.base.viewModel.ViewModel
+import com.kb.netguru.extension.navigate
+import com.kb.netguru.ui.popup.ADD_ITEM_DIALOG
+import com.kb.netguru.ui.popup.addItemDialog.AddItemDialogModel
 import javax.inject.Inject
 
-class MainFragmentViewModel @Inject constructor() : BaseViewModel()
-{
+class MainFragmentViewModel @Inject constructor(val application: NetguruApplication) : BaseViewModel() {
+
     var items = ObservableArrayList<ViewModel>()
 
     init {
         items.add(ItemShoppingListViewModel())
     }
 
-    fun onAddButtonClicked(){
-        val dialogFragment = DialogFragment()
-        dialogFragment.view
+    fun onAddButtonClicked() {
+        navigate(application.navigator) {
+            showAddItemDialog(
+                    AddItemDialogModel("Add Shopping List"),
+                    { dismissDialog(ADD_ITEM_DIALOG) },
+                    {}
+            )
+        }
     }
 }

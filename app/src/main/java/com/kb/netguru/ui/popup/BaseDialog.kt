@@ -12,6 +12,8 @@ import android.view.*
 import com.kb.netguru.BR
 import com.kb.netguru.base.viewModel.BaseViewModel
 
+const val ADD_ITEM_DIALOG = "ADD_ITEM_DIALOG"
+
 open class BaseDialog : DialogFragment() {
 
     private lateinit var viewModel: BaseViewModel

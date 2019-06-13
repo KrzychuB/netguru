@@ -2,6 +2,7 @@ package com.kb.netguru.di
 
 import android.app.Application
 import android.arch.persistence.room.Room
+import com.kb.netguru.NetguruApplication
 import com.kb.netguru.db.DataBase
 import com.kb.netguru.db.ProductDao
 import com.kb.netguru.db.ShoppingListsDao
@@ -31,5 +32,12 @@ class AppModule
     fun provideProductDao(db: DataBase): ProductDao
     {
         return db.productDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideApplication(app: Application): NetguruApplication
+    {
+        return app as NetguruApplication
     }
 }
