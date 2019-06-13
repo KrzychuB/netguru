@@ -9,8 +9,8 @@ interface ShoppingListsDao{
 //    fun getShoppingList()
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertShoppingList(transformer: ShoppingList)
+    fun insertShoppingList(shoppingList: ShoppingList)
 
     @Delete
-    fun deleteUser(transformer: ShoppingList)
+    fun deleteUser(shoppingList: ShoppingList)
 }

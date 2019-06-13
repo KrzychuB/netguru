@@ -20,7 +20,7 @@ class Navigator(activity: BaseActivity) : BaseNavigator(activity) {
         replaceFragment(fragment, true)
     }
 
-    fun showAddItemDialog(addItemDialogModel: AddItemDialogModel, buttonNegativeListener: () -> Unit, buttonPositiveListener: () -> Unit) {
+    fun showAddItemDialog(addItemDialogModel: AddItemDialogModel, buttonNegativeListener: () -> Unit, buttonPositiveListener: (shoppingListName: String) -> Unit) {
         val viewModel = AddItemDialogViewModel(addItemDialogModel, buttonNegativeListener, buttonPositiveListener)
         showDialog(viewModel, R.layout.dialog_add_item, ADD_ITEM_DIALOG)
     }
