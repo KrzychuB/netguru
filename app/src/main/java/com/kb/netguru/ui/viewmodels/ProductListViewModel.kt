@@ -4,6 +4,7 @@ import android.databinding.ObservableArrayList
 import android.graphics.Canvas
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
+import android.widget.Toast
 import com.kb.netguru.NetguruApplication
 import com.kb.netguru.Utils.SwipeUtils
 import com.kb.netguru.base.viewModel.BaseViewModel
@@ -32,6 +33,8 @@ class ProductListViewModel @Inject constructor(val application: NetguruApplicati
             .subscribe( { result -> success(result) }, {} )
 
         compositeDisposable.add(productListDisposable)
+
+        toast("Swipe To delete")
     }
 
     fun onAddButtonClicked(){
@@ -102,6 +105,11 @@ class ProductListViewModel @Inject constructor(val application: NetguruApplicati
             .subscribe {}
 
         compositeDisposable.add(archiveDisposable)
+    }
+
+    fun toast(text: String, length: Int = Toast.LENGTH_LONG) {
+        Toast.makeText(application, text, length)
+            .show()
     }
 }
 
