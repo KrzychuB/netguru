@@ -13,12 +13,12 @@ import javax.inject.Singleton
 @Singleton
 class ShopRepository @Inject constructor(private val shoppingListsDao: ShoppingListsDao, private  val productDao: ProductDao, val shoppingListManager: ShoppingListManager) {
     fun addShopingList(shoppingListName: String) {
-        val shoppingList = ShoppingList(0, shoppingListName, Date())
+        val shoppingList = ShoppingList(0, shoppingListName, Date(), false)
         shoppingListsDao.insertShoppingList(shoppingList)
     }
 
-    fun getShoppingList(): Flowable<List<ShoppingList>> {
-         return shoppingListsDao.getShoppingList()
+    fun getShoppingList(isArchived: Boolean): Flowable<List<ShoppingList>> {
+         return shoppingListsDao.getShoppingList(isArchived)
     }
 
     fun addProductToShoppingList(productName: String){
@@ -32,5 +32,9 @@ class ShopRepository @Inject constructor(private val shoppingListsDao: ShoppingL
 
     fun deleteProduct(product: Product) {
         productDao.deleteProduct(product)
+    }
+
+    fun archiveShoppingList(shoppingListId: Int){
+        shoppingListsDao.updateShoppingList(true, shoppingListId)
     }
 }

@@ -20,7 +20,7 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class ProductListViewModel @Inject constructor(val application: NetguruApplication, private val shopRepository: ShopRepository, shoppingListManager: ShoppingListManager) : BaseViewModel() {
+class ProductListViewModel @Inject constructor(val application: NetguruApplication, private val shopRepository: ShopRepository, val shoppingListManager: ShoppingListManager) : BaseViewModel() {
 
     var items = ObservableArrayList<ViewModel>()
     var compositeDisposable = CompositeDisposable()
@@ -92,6 +92,16 @@ class ProductListViewModel @Inject constructor(val application: NetguruApplicati
                 super.onChildDraw(canvas, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
             }
         }
+    }
+
+    fun archiveShoppingList(){
+        val archiveDisposable = Observable.fromCallable {
+            shopRepository.archiveShoppingList(shoppingListManager.shoppingListId!!)
+        }.subscribeOn(Schedulers.io())
+            .observeOn(Schedulers.io())
+            .subscribe {}
+
+        compositeDisposable.add(archiveDisposable)
     }
 }
 

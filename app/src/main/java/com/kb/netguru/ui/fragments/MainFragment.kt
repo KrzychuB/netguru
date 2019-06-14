@@ -1,19 +1,12 @@
 package com.kb.netguru.ui.fragments
 
-import android.databinding.DataBindingUtil
-import android.databinding.ViewDataBinding
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import com.kb.netguru.BR
+import android.view.Menu
+import android.view.MenuInflater
 import com.kb.netguru.R
-import com.kb.netguru.base.fragment.BaseFragment
 import com.kb.netguru.base.fragment.BaseFragmentWithVM
 import com.kb.netguru.base.viewModel.BaseViewModel
 import com.kb.netguru.ui.viewmodels.MainFragmentViewModel
-import dagger.android.support.AndroidSupportInjection
 import javax.inject.Inject
 
 class MainFragment : BaseFragmentWithVM()
@@ -33,8 +26,19 @@ class MainFragment : BaseFragmentWithVM()
         return mainFragmentViewModel
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setHasOptionsMenu(true)
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         mainFragmentViewModel.dispose()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.main_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }

@@ -25,7 +25,7 @@ class MainFragmentViewModel @Inject constructor(val application: NetguruApplicat
 
 
     init {
-        val shoppingListDisposable = shopRepository.getShoppingList()
+        val shoppingListDisposable = shopRepository.getShoppingList(false)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe( {result -> success(result) }, {} )

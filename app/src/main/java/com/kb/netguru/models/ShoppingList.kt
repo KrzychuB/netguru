@@ -16,5 +16,7 @@ data class ShoppingList(
     @field:SerializedName("shoppingListsName")
     val shoppingListsName: String,
     @field:SerializedName("createDate")
-    val createDate: Date
+    val createDate: Date,
+    @field:SerializedName("isArchived")
+    val isArchived: Boolean
 )
