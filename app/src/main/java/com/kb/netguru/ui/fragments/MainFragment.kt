@@ -32,4 +32,9 @@ class MainFragment : BaseFragmentWithVM()
     override fun provideViewModel(savedInstanceState: Bundle?): BaseViewModel {
         return mainFragmentViewModel
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mainFragmentViewModel.dispose()
+    }
 }

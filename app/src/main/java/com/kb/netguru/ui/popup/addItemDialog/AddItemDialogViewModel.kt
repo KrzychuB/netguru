@@ -17,6 +17,6 @@ class AddItemDialogViewModel(
 
     fun onButtonPositiveClicked(){
         val listName = shoppingListName.get() ?: ""
-        buttonPositiveListener(listName)
+        buttonPositiveListener.invoke(listName)
     }
 }

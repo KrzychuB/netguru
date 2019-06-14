@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import com.kb.netguru.base.adapters.MultiViewAdapter;
 import com.kb.netguru.base.adapters.ViewProvider;
 import com.kb.netguru.base.adapters.ViewProviders;
@@ -35,5 +36,13 @@ public class BindingAdapters {
         Parcelable layoutManagerState = layoutManager.onSaveInstanceState();
         ((MultiViewAdapter) adapter).setItems(items);
         layoutManager.onRestoreInstanceState(layoutManagerState);
+    }
+
+    @BindingAdapter("swipe")
+    public static void addSwipeToRecyclerView(RecyclerView recyclerView, @Nullable ItemTouchHelper.Callback swipeController) {
+        if (swipeController != null) {
+            ItemTouchHelper itemTouchHelper = new ItemTouchHelper(swipeController);
+            itemTouchHelper.attachToRecyclerView(recyclerView);
+        }
     }
 }

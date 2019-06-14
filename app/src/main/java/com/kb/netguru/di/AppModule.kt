@@ -6,6 +6,7 @@ import com.kb.netguru.NetguruApplication
 import com.kb.netguru.db.DataBase
 import com.kb.netguru.db.ProductDao
 import com.kb.netguru.db.ShoppingListsDao
+import com.kb.netguru.managers.ShoppingListManager
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -39,5 +40,12 @@ class AppModule
     fun provideApplication(app: Application): NetguruApplication
     {
         return app as NetguruApplication
+    }
+
+    @Provides
+    @Singleton
+    fun provideShoppingListManager(): ShoppingListManager
+    {
+        return ShoppingListManager()
     }
 }

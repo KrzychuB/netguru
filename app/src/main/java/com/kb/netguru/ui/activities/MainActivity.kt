@@ -10,6 +10,6 @@ class MainActivity : BaseActivity() {
     {
         super.onCreate(savedInstanceState)
         val navigator = application.navigator
-        navigate(navigator){ goToForgetPassword() }
+        navigate(navigator){ goToMainFragment() }
     }
 }
